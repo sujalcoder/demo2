@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Login — Tech Sujal</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg1: #0f172a; /* dark blue */
+      --bg2: #0ea5e9; /* cyan */
+      --accent: #fbbf24; /* yellow */
+      --card: #ffffff;
+      --muted: #6b7280;
+      --success: #10b981;
+      --danger: #ef4444;
+    }
+
+    *{box-sizing: border-box; font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;}
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background: linear-gradient(135deg, var(--bg1) 0%, #063b57 45%, var(--bg2) 100%);
+      color: #0b1220;
+    }
+
+    .container{
+      width: min(960px, 94%);
+      display: grid;
+      grid-template-columns: 1fr 420px;
+      gap: 28px;
+      align-items: center;
+      padding: 28px;
+    }
+
+    /* left info / hero */
+    .hero{
+      color: #fff;
+      padding: 28px;
+    }
+    .logo{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom: 18px;
+    }
+    .logo .mark{
+      width:52px; height:52px; background:var(--card); border-radius:10px;
+      display:flex; align-items:center; justify-content:center; font-weight:800; color:var(--bg1);
+      box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+      font-size:20px;
+    }
+    .logo h1{ margin:0; font-size:20px; font-weight:700;}
+    .hero h2{ margin: 6px 0 12px; font-size:34px; line-height:1.05; font-weight:800; letter-spacing:-0.5px;}
+    .hero p{ margin:0; color: rgba(255,255,255,0.9); font-size:16px; opacity:0.95;}
+
+    /* card */
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.96));
+      border-radius: 14px;
+      padding: 28px;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.35);
+      width:100%;
+    }
+    .card h3{ margin:0 0 14px; font-size:20px; color: var(--bg1);}
+    .form-group{ margin-bottom:14px; }
+    label{ display:block; font-size:13px; color:var(--muted); margin-bottom:6px; font-weight:600;}
+    input[type="text"], input[type="password"], input[type="email"]{
+      width:100%;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid #e6e9ef;
+      font-size:15px;
+      outline:none;
+      transition: box-shadow .15s, border-color .15s;
+    }
+    input:focus{ box-shadow: 0 6px 18px rgba(14,165,233,0.12); border-color: rgba(14,165,233,0.9);}
+
+    .row{ display:flex; gap:8px; }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      padding:10px 14px;
+      border-radius:10px;
+      background: linear-gradient(90deg, var(--bg1), #083b57);
+      color: #fff; border:0; cursor:pointer;
+      font-weight:700;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.25);
+    }
+    .btn.secondary{ background: transparent; color: var(--bg1); border:1px solid #e6e9ef; font-weight:700;}
+    .small{ font-size:13px; color:var(--muted); margin-top:8px; }
+
+    .hint{ font-size:13px; color:var(--muted); margin-top:6px; }
+    .error{ color: var(--danger); font-weight:700; margin-top:8px; font-size:13px; }
+    .success{ color: var(--success); font-weight:700; margin-top:8px; font-size:13px; }
+
+    .password-row{ display:flex; gap:8px; align-items:center; }
+    .toggle-pass{
+      background: transparent; border:0; color:var(--bg1); cursor:pointer; font-weight:700;
+      padding:8px; border-radius:8px;
+    }
+
+    /* responsive */
+    @media (max-width:880px){
+      .container{ grid-template-columns: 1fr; gap:20px; padding:18px;}
+      .hero h2{ font-size:28px; }
+    }
+
+    /* small footer */
+    .footer{ margin-top:12px; font-size:12px; color:var(--muted); }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- LEFT: Hero -->
+    <div class="hero">
+      <div class="logo">
+        <div class="mark">TS</div>
+        <h1>Tech Sujal</h1>
+      </div>
+
+      <h2>Login to your account</h2>
+      <p>Fast and simple login page demo. Use the demo credentials or connect this form with your backend later.</p>
+      <div style="height:18px"></div>
+
+      <div style="background:rgba(255,255,255,0.06); padding:12px; border-radius:10px; display:inline-block;">
+        <strong style="color:var(--accent)">Demo credentials:</strong>
+        <div style="font-size:13px; color:rgba(255,255,255,0.9); margin-top:6px;">
+          Email: <code>user@example.com</code><br>
+          Password: <code>password123</code>
+        </div>
+      </div>
+
+      <div class="footer">Tip: Replace demo auth with your server-side login (PHP/Node/Python) for production.</div>
+    </div>
+
+    <!-- RIGHT: Card (form) -->
+    <div class="card" aria-live="polite">
+      <h3>Welcome back</h3>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input id="email" type="email" placeholder="you@domain.com" autocomplete="username">
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-row">
+          <input id="password" type="password" placeholder="Enter your password" autocomplete="current-password" style="flex:1;">
+          <button id="toggle" class="toggle-pass" aria-label="toggle password">Show</button>
+        </div>
+      </div>
+
+      <div class="form-group row" style="margin-top:12px;">
+        <button id="loginBtn" class="btn" style="flex:1;">Login</button>
+        <button id="guestBtn" class="btn secondary">Guest</button>
+      </div>
+
+      <div id="msg" class="hint">Need an account? <a href="#" style="color:var(--bg1); font-weight:700; text-decoration:none;">Sign up</a></div>
+      <div id="status" aria-live="polite"></div>
+    </div>
+
+  </div>
+
+<script>
+  // Simple client-side demo auth (FOR DEMO ONLY)
+  const emailInput = document.getElementById('email');
+  const passInput  = document.getElementById('password');
+  const toggleBtn  = document.getElementById('toggle');
+  const loginBtn   = document.getElementById('loginBtn');
+  const guestBtn   = document.getElementById('guestBtn');
+  const statusDiv  = document.getElementById('status');
+
+  // Toggle password visibility
+  toggleBtn.addEventListener('click', () => {
+    const type = passInput.getAttribute('type') === 'password' ? 'text' : 'password';
+    passInput.setAttribute('type', type);
+    toggleBtn.textContent = type === 'password' ? 'Show' : 'Hide';
+  });
+
+  // Simple validation + demo authentication
+  function showMessage(text, kind='error'){
+    statusDiv.textContent = text;
+    statusDiv.className = kind === 'error' ? 'error' : 'success';
+  }
+
+  loginBtn.addEventListener('click', () => {
+    const email = emailInput.value.trim();
+    const pass  = passInput.value;
+
+    if(!email || !pass){
+      showMessage('Please enter both email and password.', 'error');
+      return;
+    }
+
+    // very simple demo auth: replace with server-side call in production
+    const DEMO_EMAIL = 'user@example.com';
+    const DEMO_PASS  = 'password123';
+
+    showMessage('Checking...', ''); // temporary neutral
+
+    setTimeout(() => {
+      if(email.toLowerCase() === DEMO_EMAIL && pass === DEMO_PASS){
+        showMessage('Login successful! Redirecting...', 'success');
+        // demo redirect
+        setTimeout(() => {
+          // In real app, you would redirect to dashboard
+          alert('Demo login successful — implement real redirect!');
+        }, 850);
+      } else {
+        showMessage('Invalid credentials. Use demo: user@example.com / password123', 'error');
+      }
+    }, 700);
+  });
+
+  // Guest quick-fill
+  guestBtn.addEventListener('click', () => {
+    emailInput.value = 'user@example.com';
+    passInput.value = 'password123';
+    loginBtn.click();
+  });
+
+  // Allow enter key to submit
+  [emailInput, passInput].forEach(el => {
+    el.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') loginBtn.click();
+    });
+  });
+</script>
+
+</body>
+</html>
